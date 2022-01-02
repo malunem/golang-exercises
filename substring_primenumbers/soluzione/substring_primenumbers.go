@@ -23,29 +23,33 @@ func main() {
 
 func getPrimeNumbers(number string) (prime_numbers []int) {
 
-	n, _ := strconv.Atoi(number)
+	//n, _ := strconv.Atoi(number)
 
-	if isPrime(n) {
-		//fmt.Println(n)
-	}
+	//if isPrime(n) {
+	//fmt.Println(n)
+	//	}
 
 	for length := 1; length <= 3; length++ {
 
-		fmt.Println("length: ", length) //test
+		fmt.Println("\nlength: ", length) //test
+		fmt.Printf("\nrange su: %s (number[:%d])\n", number[:len(number)-length+1], len(number)-length+1)
 
 		for index := range number[:len(number)-length+1] {
 
-			fmt.Println("\tindex: ", index) //test
+			fmt.Println("\n\tindex: ", index) //test
 
 			substring_number := number[:index] + number[index+length:]
 
-			fmt.Printf("\t\t%s := number[:index] (%s) + number[index+length:] (%s)\n", substring_number, number[:index], number[index+length:]) //test
+			fmt.Printf("\n\t\t%s := number[:%d] + number[%d:]\n", substring_number, index, index+length)        //test
+			fmt.Printf("\n\t\trimosso: %s := number[%d:%d]\n", number[index:index+length], index, index+length) //test
 
 			n, _ := strconv.Atoi(substring_number)
 
 			if isPrime(n) {
-				//fmt.Println(n)
+				fmt.Printf("\n\n\t\t*** %d ***\n\n", n)
 				prime_numbers = append(prime_numbers, n)
+			} else {
+				fmt.Printf("\n\n\t\txxx %d xxx\n\n", n)
 			}
 		}
 	}
